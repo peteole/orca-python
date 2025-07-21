@@ -29,9 +29,10 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Install dependencies
+    - name: Create virtual environment and install dependencies
       run: |
-        uv pip install --system cibuildwheel
+        uv venv --python 3.11
+        uv pip install -r requirements-dev.txt
 
     - name: Build wheels
       run: |
@@ -87,9 +88,15 @@ jobs:
       with:
         version: "latest"
 
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
     - name: Publish to PyPI
       run: |
-        uv pip install --system twine
+        uv venv --python 3.11
+        uv pip install twine
         uv run python -m twine upload dist/* --skip-existing
       env:
         TWINE_USERNAME: __token__
