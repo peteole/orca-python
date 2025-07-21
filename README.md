@@ -13,6 +13,8 @@ ORCA is an efficient algorithm for counting graphlets in networks. It computes n
 pip install orca-graphlets
 ```
 
+> **Note**: This package provides pre-built wheels for Linux (x86_64), macOS (x86_64, arm64), and Windows (x64) for Python 3.8+. No compilation required!
+
 ## Usage
 
 ```python
@@ -149,8 +151,25 @@ make build         # Build package for development
 make test          # Run tests
 make wheel         # Build wheel
 make clean         # Clean build artifacts
-make ci-wheels     # Build wheels for all platforms
+make ci-wheels     # Build wheels for all platforms (Linux, macOS, Windows)
 ```
+
+### Building Cross-Platform Wheels
+
+This package uses [cibuildwheel](https://cibuildwheel.readthedocs.io/) to build wheels for multiple platforms:
+
+```bash
+# Build wheels for all platforms (requires Docker for Linux builds)
+make ci-wheels
+
+# Or run cibuildwheel directly
+uv run python -m cibuildwheel --output-dir wheelhouse
+```
+
+The wheels are automatically built for:
+- **Linux**: manylinux_2_28_x86_64 (Python 3.8-3.12)
+- **macOS**: x86_64 and arm64 (Python 3.8-3.12)  
+- **Windows**: x64 (Python 3.8-3.12)
 
 ## Citation
 

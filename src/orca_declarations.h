@@ -16,7 +16,8 @@ using namespace std;
 
 typedef long long int64;
 typedef pair<int, int> PII;
-typedef struct {
+typedef struct
+{
     int first, second, third;
 } TIII;
 
@@ -52,7 +53,7 @@ void ecount5();
 int motif_counts(const char *orbit_type, int graphlet_size,
                  const char *input_filename, const char *output_filename, std::string &out_str);
 
-int motif_counts(char *orbit_type, int graphlet_size, 
+int motif_counts(char *orbit_type, int graphlet_size,
                  const char *input_filename, const char *output_filename);
 
 #endif // ORCA_DECLARATIONS_H
