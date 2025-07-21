@@ -52,10 +52,13 @@ dev-dependencies = [
 [tool.cibuildwheel]
 # Build wheels for Python 3.8+
 build = "cp38-* cp39-* cp310-* cp311-* cp312-*"
-skip = "*-win32 *-manylinux_i686"
+skip = "*-win32 *-manylinux_i686 cp38-musllinux*"
 
-# Install dependencies
-before-build = "pip install pybind11[global] numpy"
+# Install dependencies - use specific NumPy versions for faster builds
+before-build = [
+    "pip install pybind11[global]",
+    "pip install --only-binary=all numpy || pip install numpy",
+]
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
