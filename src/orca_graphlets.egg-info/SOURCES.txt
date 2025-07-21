@@ -1,4 +1,5 @@
 LICENSE
+LICENSE_CONFIG_FIX.md
 MANIFEST.in
 README.md
 pyproject.toml

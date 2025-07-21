@@ -117,9 +117,9 @@ py::array_t<long long> count_orbits_wrapper(
     auto buf_result = result_array.request();
     long long *ptr = static_cast<long long *>(buf_result.ptr);
 
-    for (int i = 0; i < n_elements && i < results.size(); i++)
+    for (int i = 0; i < n_elements && i < static_cast<int>(results.size()); i++)
     {
-        for (int j = 0; j < n_orbits && j < results[i].size(); j++)
+        for (int j = 0; j < n_orbits && j < static_cast<int>(results[i].size()); j++)
         {
             ptr[i * n_orbits + j] = results[i][j];
         }

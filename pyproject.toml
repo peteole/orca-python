@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "orca-graphlets"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python bindings for ORCA (ORbit Counting Algorithm) - graphlet counting"
 authors = [
     {name = "Ole Petersen", email = "peteole2707@gmail.com"},
