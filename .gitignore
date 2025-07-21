@@ -1,0 +1,4 @@
+build/
+.vscode/
+dist/
+src/orca.cpython-312-darwin.so

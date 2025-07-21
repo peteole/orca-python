@@ -1,0 +1,67 @@
+[build-system]
+requires = [
+    "setuptools>=45",
+    "wheel",
+    "pybind11>=2.6.0",
+    "pybind11[global]",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orca-graphlets"
+version = "0.1.0"
+description = "Python bindings for ORCA (ORbit Counting Algorithm) - graphlet counting"
+authors = [
+    {name = "Ole Petersen", email = "peteole2707@gmail.com"},
+]
+license = "GPL-3.0"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+keywords = ["graph analysis", "graphlets", "network science", "orbits", "bioinformatics"]
+dependencies = [
+    "numpy>=1.15",
+]
+
+[project.urls]
+Homepage = "https://github.com/peteole/orca-python"
+Repository = "https://github.com/peteole/orca-python"
+"Original ORCA" = "https://github.com/thocevar/orca"
+"Bug Reports" = "https://github.com/peteole/orca-python/issues"
+
+[tool.uv]
+dev-dependencies = [
+    "build>=0.10.0",
+    "twine>=4.0.0",
+    "pytest>=7.0.0",
+    "wheel>=0.40.0",
+]
+
+[tool.cibuildwheel]
+# Build wheels for Python 3.8+
+build = "cp38-* cp39-* cp310-* cp311-* cp312-*"
+skip = "*-win32 *-manylinux_i686"
+
+# Install dependencies
+before-build = "pip install pybind11[global]"
+
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
+
+[tool.cibuildwheel.linux]
+before-all = "yum install -y gcc-c++ || apt-get update && apt-get install -y g++"
+
+[tool.cibuildwheel.windows]
+before-build = "pip install pybind11[global]"
